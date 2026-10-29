@@ -93,28 +93,10 @@ code { font: 0.85em ui-monospace, SFMono-Regular, Menlo, monospace; color: var(-
 .profiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 .profiles .card { padding: 14px 18px; }
 
-/* top-5 contest finishes: raised gold slab */
+/* top-5 contest finishes */
 table.contests { table-layout: fixed; min-width: 760px; }
 .c-rank { width: 9%; } .c-name { width: 31%; } .c-plat { width: 15%; } .c-date { width: 13%; } .c-find { width: 22%; } .c-post { width: 10%; }
 table.contests td { overflow: hidden; text-overflow: ellipsis; }
-.podium { position: relative; margin: 26px 0 18px; transition: transform .25s ease; }
-.podium-label {
-  position: absolute; top: -11px; left: 16px; z-index: 1; padding: 1px 10px; border-radius: 999px;
-  background: var(--accent); color: #1a1408; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-}
-.podium .table-wrap {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(180deg, #231e14, #191610) padding-box,
-    linear-gradient(135deg, #f6dc8c, #b8892e 45%, #f2d27a 70%, #8a6420) border-box;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 240, 200, .12),
-    0 2px 0 #6e521d, 0 4px 0 #5a4318, 0 6px 0 #45330f,
-    0 22px 38px -10px rgba(0, 0, 0, .8), 0 0 40px -12px rgba(233, 196, 106, .35);
-}
-.podium:hover { transform: translateY(-3px); }
-.podium tr + tr td { border-top-color: rgba(233, 196, 106, .14); }
-.podium th { border-bottom-color: rgba(233, 196, 106, .3); padding-top: 16px; }
-.podium td.name a { font-weight: 600; }
-.rest { margin-top: 24px; }
-@media (prefers-reduced-motion: reduce) { .podium { transition: none; } .podium:hover { transform: none; } }
+.podium { border-color: rgba(233, 196, 106, .45); }
+.podium tr + tr td { border-top-color: rgba(233, 196, 106, .1); }
+.rest { margin-top: 12px; }
