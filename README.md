@@ -1,7 +1,5 @@
 # marketerka.github.io
 
-Portfolio site — smart contract security research. Static HTML + three.js, no build step.
+Personal site: smart contract security research. Plain HTML + CSS, no build step.
 
 Local preview: `python3 -m http.server` → http://localhost:8000
-
-Audit data lives in `main.js` (`PUBLIC`, `PRIVATE`, `HOTW`).
