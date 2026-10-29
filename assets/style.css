@@ -52,19 +52,6 @@ td.name a { color: var(--text); }
 .muted { color: var(--muted); }
 .medal { font-size: 1.15rem; line-height: 1; }
 
-/* cards */
-.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.card {
-  display: block; padding: 18px; border: 1px solid var(--border); border-radius: 10px;
-  background: var(--surface); color: inherit; text-decoration: none;
-  transition: border-color .15s, background .15s;
-}
-a.card:hover { border-color: var(--accent); background: var(--surface-2); }
-a.card h3::after { content: " →"; color: var(--accent); }
-.card h3 { margin: 0 0 6px; font-size: 1.02rem; }
-.card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
-.card .meta { margin-top: 10px; font-size: 0.8rem; color: var(--accent); }
-
 /* lists */
 .list { margin: 0; padding: 0; list-style: none; }
 .list li { padding: 10px 0; border-top: 1px solid var(--border); color: var(--soft); }
@@ -97,3 +84,21 @@ table.contests td { overflow: hidden; text-overflow: ellipsis; }
 .podium { border-color: rgba(233, 196, 106, .45); }
 .podium tr + tr td { border-top-color: rgba(233, 196, 106, .1); }
 .rest { margin-top: 12px; }
+
+/* selected findings */
+.findings { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.finding {
+  display: flex; flex-direction: column; gap: 8px; padding: 18px 20px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+  color: inherit; text-decoration: none; transition: border-color .15s, background .15s;
+}
+.finding:hover { border-color: var(--accent); background: var(--surface-2); }
+.finding-top { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--muted); }
+.sev {
+  padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2);
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--soft);
+}
+.finding h3 { margin: 0; font-size: 1.02rem; line-height: 1.35; }
+.finding p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+.finding-link { margin-top: auto; padding-top: 4px; font-size: 0.8rem; color: var(--accent); }
+@media (max-width: 600px) { .findings { grid-template-columns: 1fr; } }

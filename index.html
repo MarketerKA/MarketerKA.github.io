@@ -112,9 +112,19 @@
 
   <section>
     <h2>Selected findings</h2>
-    <div class="grid">
-      <a class="card" href="https://hackenproof.com/reports/OPENEDCA-98" target="_blank" rel="noopener"><h3>OpenEden: phantom liquidity</h3><p>High. Removing a user quota wrongly decremented <code>totalUsed</code>, breaking the core accounting invariant and letting the system allocate more liquidity than actually exists.</p><div class="meta">HackenProof report OPENEDCA-98</div></a>
-      <a class="card" href="https://hackenproof.com/reports/RAINCAPV-604" target="_blank" rel="noopener"><h3>Rain: dust deposits round to zero</h3><p>Low. Dust deposits round to zero, so <code>totalLiquidity</code> grows while <code>allFunds</code> doesn't: small deposits are lost entirely, and a ~0.5 USDT grief cuts LP rewards by up to 45%.</p><div class="meta">HackenProof report RAINCAPV-604</div></a>
+    <div class="findings">
+      <a class="finding" href="https://hackenproof.com/reports/OPENEDCA-98" target="_blank" rel="noopener">
+        <div class="finding-top"><span class="sev">High</span><span>OpenEden · HackenProof</span></div>
+        <h3>Phantom liquidity from quota removal</h3>
+        <p>Removing a user quota wrongly decremented <code>totalUsed</code>, breaking the core accounting invariant: the system could allocate more liquidity than actually exists.</p>
+        <div class="finding-link">Report OPENEDCA-98 →</div>
+      </a>
+      <a class="finding" href="https://hackenproof.com/reports/RAINCAPV-604" target="_blank" rel="noopener">
+        <div class="finding-top"><span class="sev">Low</span><span>Rain · HackenProof</span></div>
+        <h3>Dust deposits break pool accounting</h3>
+        <p>Dust deposits round to zero, so <code>totalLiquidity</code> grows while <code>allFunds</code> doesn't. Small deposits are lost entirely, and a ~0.5 USDT grief cuts LP rewards by up to 45%.</p>
+        <div class="finding-link">Report RAINCAPV-604 →</div>
+      </a>
     </div>
   </section>
 
