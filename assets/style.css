@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
-  --bg: #0a0a0a; --surface: #141414; --surface-2: #1c1c1c;
-  --text: #f2f2f2; --soft: #d4d4d4; --muted: #a3a3a3; --border: #2a2a2a;
-  --accent: #ff7a1a;
+  --bg: #0d0c0a; --surface: #171511; --surface-2: #201d17;
+  --text: #f3efe6; --soft: #d9d3c5; --muted: #a69f90; --border: #2e2a22;
+  --accent: #e9c46a;
   --crit: #f87171; --high: #fb923c; --med: #facc15; --low: #60a5fa;
 }
 * { box-sizing: border-box; }
@@ -90,3 +90,5 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--bo
   .hero h1 { font-size: 2.1rem; }
 }
 code { font: 0.85em ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--soft); }
+.profiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.profiles .card { padding: 14px 18px; }
