@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>keterka — Smart Contract Security</title>
+<meta name="description" content="Independent smart contract security researcher. Top-29 on HackenProof, 75+ findings, public contests and private audits with Phage Security, Pashov Audit Group, CODESPECT." />
+<meta property="og:title" content="keterka — Smart Contract Security Researcher" />
+<meta property="og:description" content="Top-29 on HackenProof · 75+ findings · 4× Hacker of the Week" />
+<meta name="theme-color" content="#060b14" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307111b'/%3E%3Cpath d='M32 10l18 7v13c0 12-8 20-18 24-10-4-18-12-18-24V17z' fill='none' stroke='%2334d399' stroke-width='4'/%3E%3Cpath d='M24 32l6 6 11-12' fill='none' stroke='%2322d3ee' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+</script>
+</head>
+<body>
+<canvas id="hero" class="hero-canvas" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span>
+        <span class="brand-name">keterka</span>
+        <span class="brand-sub">smart contract security</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#audits" class="nav-link">Audits</a>
+      <a href="#private" class="nav-link">Private</a>
+      <a href="#recognition" class="nav-link">Recognition</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="https://t.me/makamert" target="_blank" rel="noopener" class="btn-primary btn-sm">Request audit</a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span>Open for private audits</span>
+        <h1 class="hero-title">
+          Finding the bugs<br />
+          <span class="grad">before they find your TVL</span>
+        </h1>
+        <p class="hero-sub">
+          Independent Solidity / EVM security researcher. I break DeFi protocols in public
+          contests and private audits — perps, lending, stablecoins, prediction markets, AMMs.
+        </p>
+        <div class="hero-cta">
+          <a href="#audits" class="btn-primary">See audits
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://x.com/keterka" target="_blank" rel="noopener" class="btn-ghost">@keterka on X</a>
+        </div>
+        <div class="worked">
+          <span class="muted">Worked with</span>
+          <a href="https://phagesecurity.com/" target="_blank" rel="noopener">Phage Security</a>
+          <a href="https://www.pashov.com/" target="_blank" rel="noopener">Pashov Audit Group</a>
+          <a href="https://codespect.net/" target="_blank" rel="noopener">CODESPECT</a>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="glass stat card-3d" data-tilt>
+          <div class="stat-num">Top-29</div>
+          <div class="stat-label">HackenProof leaderboard</div>
+        </div>
+        <div class="glass stat card-3d" data-tilt>
+          <div class="stat-num">75+</div>
+          <div class="stat-label">valid findings</div>
+        </div>
+        <div class="glass stat card-3d" data-tilt>
+          <div class="stat-num">4×</div>
+          <div class="stat-label">Hacker of the Week</div>
+        </div>
+        <div class="glass stat card-3d" data-tilt>
+          <div class="stat-num" id="stat-audits">19</div>
+          <div class="stat-label">audits · public + private</div>
+        </div>
+      </div>
+    </div>
+    <a href="#audits" class="scroll-hint" aria-label="Scroll to audits"><span></span></a>
+  </section>
+
+  <!-- SEVERITY -->
+  <section class="section">
+    <div class="wrap sev-grid">
+      <div class="glass sev-canvas-wrap reveal">
+        <canvas id="sev-canvas" aria-hidden="true"></canvas>
+        <div class="sev-legend" id="sev-legend"></div>
+      </div>
+      <div class="reveal">
+        <span class="kicker">// findings</span>
+        <h2 class="section-title">What the reports say</h2>
+        <p class="section-sub">
+          Severity breakdown across the audits listed below (QA-only results excluded).
+          Every finding was reported to the protocol team through the platform or the audit report.
+        </p>
+        <div class="sev-rows" id="sev-rows"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLIC AUDITS -->
+  <section id="audits" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">// public contests</span>
+        <h2 class="section-title">Audit contests</h2>
+        <p class="section-sub">HackenProof, Code4rena, Cantina and CodeHawks. Newest first.</p>
+      </div>
+      <div class="audit-grid" id="public-grid"></div>
+    </div>
+  </section>
+
+  <!-- PRIVATE AUDITS -->
+  <section id="private" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">// private audits</span>
+        <h2 class="section-title">Private engagements</h2>
+        <p class="section-sub">Commissioned audits delivered with security firms. Reports are public where the client allowed it.</p>
+      </div>
+      <div class="glass table-wrap reveal">
+        <table class="audit-table">
+          <thead>
+            <tr><th>Protocol</th><th>Findings</th><th>Firm</th><th>Report</th><th>Post</th></tr>
+          </thead>
+          <tbody id="private-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">// recognition</span>
+        <h2 class="section-title">Hacker of the Week</h2>
+        <p class="section-sub">Picked four times by HackenProof.</p>
+      </div>
+      <div class="hotw-grid" id="hotw-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="glass contact card-3d reveal" data-tilt>
+        <div>
+          <span class="kicker">// contact</span>
+          <h2 class="section-title">Need a second pair of eyes on your contracts?</h2>
+          <p class="section-sub">Message me on Telegram with the scope, commit and timeline — I usually reply the same day.</p>
+          <div class="hero-cta">
+            <a href="https://t.me/makamert" target="_blank" rel="noopener" class="btn-primary">Telegram @makamert</a>
+            <a href="https://x.com/keterka" target="_blank" rel="noopener" class="btn-ghost">X @keterka</a>
+            <a href="https://github.com/MarketerKA" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+          </div>
+        </div>
+        <div class="profiles">
+          <div class="muted small">Audit profiles</div>
+          <a class="profile" href="https://hackenproof.com/hackers/maketer" target="_blank" rel="noopener"><span>HackenProof</span><span class="mono">maketer</span></a>
+          <a class="profile" href="https://cantina.xyz/u/Marketer7" target="_blank" rel="noopener"><span>Cantina</span><span class="mono">Marketer7</span></a>
+          <a class="profile" href="https://code4rena.com/@keterka" target="_blank" rel="noopener"><span>Code4rena</span><span class="mono">keterka</span></a>
+          <a class="profile" href="https://profiles.cyfrin.io/u/keterka" target="_blank" rel="noopener"><span>CodeHawks</span><span class="mono">keterka</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> keterka · B.Sc. Computer Science, 2022–2026</span>
+    <span class="mono muted">PoCs run on local forks only.</span>
+  </div>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
