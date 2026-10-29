@@ -103,3 +103,4 @@ table.contests td { overflow: hidden; text-overflow: ellipsis; }
 .finding-link { margin-top: auto; padding-top: 4px; font-size: 0.8rem; color: var(--accent); }
 @media (max-width: 600px) { .findings { grid-template-columns: 1fr; } }
 .pill-note { color: var(--muted); opacity: .75; }
+td.firm img { width: 16px; height: 16px; border-radius: 4px; vertical-align: -3px; margin-right: 8px; }
