@@ -117,3 +117,6 @@ td.firm img { width: 16px; height: 16px; border-radius: 4px; vertical-align: -3p
 .stat.main b { color: var(--accent); }
 a.stat:hover { background: var(--surface-2); }
 @media (max-width: 600px) { .stats { margin-left: auto; margin-right: auto; } }
+.rest td, .rest td.name a, .rest td a { color: var(--muted); }
+.rest td a:hover { color: var(--accent); }
+.rest .medal { opacity: .7; }
